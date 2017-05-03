@@ -21,10 +21,25 @@ class BehotSpider(Spider):
         'Host': 'www.toutiao.com',
         'Accept-Encoding': 'gzip, deflate, sdch',
         'Connection': 'keep-alive'
-}
+    }
+    cookies = {
+        'uuid': 'w:d492ec57915c4871bc0de2c6369690de',
+        'UM_distinctid': '15b9dfa258739e-01e82a9dfe471d-1d3c6853-1fa400-15b9dfa258857b',
+        '__utma': '24953151.1083797336.1493004068.1493087034.1493280121.2',
+        '__utmc': '24953151',
+        '__utmz': '24953151.1493087034.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+        'utm_source': 'toutiao',
+        '_ba': 'BA0.2-20170425-51d9e-h1YtcdilOu8F56Pxy14E',
+        'tt_webid': '6412403643333838337',
+        '_ga': 'GA1.2.1083797336.1493004068',
+        '_gid': 'GA1.2.307165691.1493802929',
+        'CNZZDATA1259612802': '852693823-1492999158-%7C1493799397',
+        'csrftoken': 'b3741f19e8f5c6417aac1107b32e6153',
+        '__tasessionId': '2fdm87mi01493802924035'}
+
     def start_requests(self):
         for url in self.start_urls:
-            yield Request(url, callback=self.parse, cookies={'uuid': 'w:d492ec57915c4871bc0de2c6369690de', 'UM_distinctid': '15b9dfa258739e-01e82a9dfe471d-1d3c6853-1fa400-15b9dfa258857b', '__utma': '24953151.1083797336.1493004068.1493087034.1493280121.2', '__utmc': '24953151', '__utmz': '24953151.1493087034.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)', 'utm_source': 'toutiao', '_ba': 'BA0.2-20170425-51d9e-h1YtcdilOu8F56Pxy14E', 'tt_webid': '6412403643333838337', '_ga': 'GA1.2.1083797336.1493004068', '_gid': 'GA1.2.307165691.1493802929', 'CNZZDATA1259612802': '852693823-1492999158-%7C1493799397', 'csrftoken': 'b3741f19e8f5c6417aac1107b32e6153', '__tasessionId': '2fdm87mi01493802924035'}, headers=self.headers)
+            yield Request(url, callback=self.parse, cookies=self.cookies, headers=self.headers)
 
     def parse(self, response):
         print response.headers
