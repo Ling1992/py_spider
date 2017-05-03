@@ -41,4 +41,3 @@ MYSQL_DBNAME = 'ling_python_test1'
 MYSQL_USER = 'root'
 MYSQL_PASSWD = 'root'
 
-
